@@ -1,0 +1,196 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .body {
+    background: url(/img/bg.jpg);
+    min-height: 100vh;
+    background-size: 100vw, 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #scoreBox {
+    position: absolute;
+    top: 9px;
+    right: 200px;
+    font-size: 39px;
+    font-weight: bold;
+  }
+  
+  #hiscoreBox {
+    position: absolute;
+    top: 85px;
+    right: 193px;
+    font-size: 39px;
+    font-weight: bold;
+  }
+  
+  #board {
+    background: linear-gradient(rgb(113, 122, 113), yellow);
+    width: 90vmin;
+    height: 92vmin;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+  }
+  
+  .head {
+    background-color: red;
+    border: 2px solid rgb(43, 1, 43);
+    background: linear-gradient(rgb(233, 124, 124), yellow);
+    transform: scale(1.02);
+    border-radius: 9px;
+  }
+  
+  .snake {
+    background-color: purple;
+    border: 0.25vmin solid white;
+    border-radius: 12px;
+  }
+  
+  .food {
+    background: linear-gradient(red, purple);
+    border: 0.25vmin solid black;
+    border-radius: 8px;
+  }
+  
+  /* Mobile controls - sirf mobile me show karne ke liye */
+  .mobile-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: none; /* default hidden */
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+  }
+  
+  /* Mobile pe show karo */
+  @media screen and (max-width: 768px) {
+    .mobile-controls {
+      display: flex;
+    }
+  }
+  
+  .middle-row {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .arrow-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+    border-radius: 12px;
+    border: none;
+    background-color: purple;
+    color: white;
+    user-select: none;
+  }
+    .arrow-btn:active {
+        transform: scale(0.9);
+    }
+    .arrow-btn:focus {
+        outline: none;
+    }
+    .arrow-btn:hover {  
+        background-color: rgb(150, 0, 150);
+    }
+    .arrow-btn:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }   
+    .arrow-btn:disabled:hover {
+            background-color: gray;
+        }
+    .arrow-btn:active {
+        transform: scale(0.9);
+    }
+    .arrow-btn:focus {
+            outline: none;
+        }
+    .arrow-btn:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }
+    .arrow-btn:disabled:hover {
+        background-color: gray;
+    }
+    .arrow-btn:active {
+            transform: scale(0.9);
+        }
+    .arrow-btn:focus {
+        outline: none;
+    }
+    .arrow-btn:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }
+    .arrow-btn:disabled:hover {
+        background-color: gray;
+    }
+    .arrow-btn:active {
+        transform: scale(0.9);
+    }
+    .arrow-btn:focus {
+        outline: none;
+    }
+    .arrow-btn:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }
+    .arrow-btn:disabled:hover {
+        background-color: gray;
+    }
+    .arrow-btn:active {
+            transform: scale(0.9);
+        }
+    .arrow-btn:focus {
+        outline: none;
+    }
+    /* Body styling - background ko pura screen pe set karna */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; /* horizontal scroll hatane ke liye */
+  }
+  
+
+  .body {
+    background: url(/img/bg.jpg) no-repeat center center fixed;
+    background-size: cover; /* background pura area cover kare */
+    min-height: 100vh; /* minimum height viewport ke barabar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    /* Score box styling */
+#scoreBox{
+    position: absolute;
+    top: 9px;
+    right: 200px;
+    font-size: 39px;
+    font-weight: bold;
+    color: rgb(24, 21, 21); /* text color */
+}
+#hiscoreBox {
+    position: absolute;
+    top: 85px;
+    right: 193px;
+    font-size: 39px;
+    font-weight: bold;
+    color: rgb(15, 14, 14); /* text color */
+}
+
