@@ -1,196 +1,222 @@
 * {
-    padding: 0;
-    margin: 0;
-  }
-  
-  .body {
-    background: url(/img/bg.jpg);
-    min-height: 100vh;
-    background-size: 100vw, 100vh;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #scoreBox {
-    position: absolute;
-    top: 9px;
-    right: 200px;
-    font-size: 39px;
-    font-weight: bold;
-  }
-  
-  #hiscoreBox {
-    position: absolute;
-    top: 85px;
-    right: 193px;
-    font-size: 39px;
-    font-weight: bold;
-  }
-  
-  #board {
-    background: linear-gradient(rgb(113, 122, 113), yellow);
-    width: 90vmin;
-    height: 92vmin;
-    border: 2px solid black;
-    display: grid;
-    grid-template-rows: repeat(18, 1fr);
-    grid-template-columns: repeat(18, 1fr);
-  }
-  
-  .head {
-    background-color: red;
-    border: 2px solid rgb(43, 1, 43);
-    background: linear-gradient(rgb(233, 124, 124), yellow);
-    transform: scale(1.02);
-    border-radius: 9px;
-  }
-  
-  .snake {
-    background-color: purple;
-    border: 0.25vmin solid white;
-    border-radius: 12px;
-  }
-  
-  .food {
-    background: linear-gradient(red, purple);
-    border: 0.25vmin solid black;
-    border-radius: 8px;
-  }
-  
-  /* Mobile controls - sirf mobile me show karne ke liye */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+.body {
+  background: url("img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 220px; /* space for mobile buttons */
+}
+
+#scoreBox, #hiscoreBox {
+  position: absolute;
+  font-size: 39px;
+  font-weight: bold;
+  color: rgb(24, 21, 21);
+  z-index: 10;
+}
+
+#scoreBox {
+  top: 9px;
+  right: 200px;
+}
+
+#hiscoreBox {
+  top: 85px;
+  right: 193px;
+}
+
+#board {
+  background: linear-gradient(rgb(113, 122, 113), yellow);
+  width: 90vmin;
+  height: 92vmin;
+  border: 2px solid black;
+  display: grid;
+  grid-template-rows: repeat(18, 1fr);
+  grid-template-columns: repeat(18, 1fr);
+  position: relative;
+  z-index: 5;
+}
+
+.head {
+  background-color: red;
+  border: 2px solid rgb(43, 1, 43);
+  background: linear-gradient(rgb(233, 124, 124), yellow);
+  transform: scale(1.02);
+  border-radius: 9px;
+}
+
+.snake {
+  background-color: purple;
+  border: 0.25vmin solid white;
+  border-radius: 12px;
+}
+
+.food {
+  background: linear-gradient(red, purple);
+  border: 0.25vmin solid black;
+  border-radius: 8px;
+}
+
+/* Mobile Controls */
+@media screen and (max-width: 768px) {
   .mobile-controls {
     position: fixed;
     bottom: 20px;
-    left: 0;
-    width: 100%;
-    display: none; /* default hidden */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
     z-index: 1000;
   }
-  
-  /* Mobile pe show karo */
-  @media screen and (max-width: 768px) {
-    .mobile-controls {
-      display: flex;
-    }
-  }
-  
-  .middle-row {
-    width: 100%;
-    max-width: 360px;
+
+  .row {
     display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+    width: 100%;
   }
-  
+
+  .row.center {
+    justify-content: center;
+  }
+
+  .row.space {
+    justify-content: space-between;
+    gap: 80px;
+  }
+
   .arrow-btn {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     font-size: 2.5rem;
-    border-radius: 12px;
+    border-radius: 14px;
     border: none;
     background-color: purple;
     color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease;
     user-select: none;
+    cursor: pointer;
   }
-    .arrow-btn:active {
-        transform: scale(0.9);
-    }
-    .arrow-btn:focus {
-        outline: none;
-    }
-    .arrow-btn:hover {  
-        background-color: rgb(150, 0, 150);
-    }
-    .arrow-btn:disabled {
-        background-color: gray;
-        cursor: not-allowed;
-    }   
-    .arrow-btn:disabled:hover {
-            background-color: gray;
-        }
-    .arrow-btn:active {
-        transform: scale(0.9);
-    }
-    .arrow-btn:focus {
-            outline: none;
-        }
-    .arrow-btn:disabled {
-        background-color: gray;
-        cursor: not-allowed;
-    }
-    .arrow-btn:disabled:hover {
-        background-color: gray;
-    }
-    .arrow-btn:active {
-            transform: scale(0.9);
-        }
-    .arrow-btn:focus {
-        outline: none;
-    }
-    .arrow-btn:disabled {
-        background-color: gray;
-        cursor: not-allowed;
-    }
-    .arrow-btn:disabled:hover {
-        background-color: gray;
-    }
-    .arrow-btn:active {
-        transform: scale(0.9);
-    }
-    .arrow-btn:focus {
-        outline: none;
-    }
-    .arrow-btn:disabled {
-        background-color: gray;
-        cursor: not-allowed;
-    }
-    .arrow-btn:disabled:hover {
-        background-color: gray;
-    }
-    .arrow-btn:active {
-            transform: scale(0.9);
-        }
-    .arrow-btn:focus {
-        outline: none;
-    }
-    /* Body styling - background ko pura screen pe set karna */
-body, html {
+
+  .arrow-btn:active {
+    transform: scale(0.95);
+  }
+
+  #scoreBox,
+  #hiscoreBox {
+    font-size: 24px;
+    right: 20px;
+  }
+}
+/* Score container above board */
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90vmin;
+  max-width: 500px;
+  margin-bottom: 16px;
+  padding: 0 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(24, 21, 21);
+}
+
+/* Remove old absolute positioning */
+#scoreBox,
+#hiscoreBox {
+  position: static;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+@media screen and (max-width: 768px) {
+  .score-container {
+    font-size: 1.2rem;
+  }
+}
+/* Default: Mobile-friendly above the board */
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90vmin;
+  max-width: 500px;
+  margin-bottom: 16px;
+  padding: 0 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(24, 21, 21);
+}
+
+/* Remove default fixed style */
+#scoreBox,
+#hiscoreBox {
+  position: static;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+/* Desktop/Laptop view: restore original style */
+@media screen and (min-width: 769px) {
+  .score-container {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    width: auto;
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden; /* horizontal scroll hatane ke liye */
+    font-size: 2rem;
   }
-  
 
+  #scoreBox,
+  #hiscoreBox {
+    font-size: 2rem;
+    color: rgb(24, 21, 21);
+  }
+}
+/* Default (Mobile): stacked layout */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 220px;
+  background: url("img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+/* Desktop view: center board vertically */
+@media screen and (min-width: 769px) {
   .body {
-    background: url(/img/bg.jpg) no-repeat center center fixed;
-    background-size: cover; /* background pura area cover kare */
-    min-height: 100vh; /* minimum height viewport ke barabar */
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    padding-bottom: 0;
   }
-    /* Score box styling */
-#scoreBox{
-    position: absolute;
-    top: 9px;
-    right: 200px;
-    font-size: 39px;
-    font-weight: bold;
-    color: rgb(24, 21, 21); /* text color */
 }
-#hiscoreBox {
-    position: absolute;
-    top: 85px;
-    right: 193px;
-    font-size: 39px;
-    font-weight: bold;
-    color: rgb(15, 14, 14); /* text color */
+@media screen and (min-width: 769px) {
+  .mobile-controls {
+    display: none !important;
+  }
 }
-
